@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyphen</title>
+</head>
+
+<body>
+    <style>
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #input {
+            padding: 10px;
+
+        }
+
+        #output {
+            text-transform: uppercase;
+            font-size: 20px;
+            color: rgb(59, 186, 36);
+        }
+    </style>
+    <div class="wrapper">
+        <div class="container">
+            <input type="text" id="input" onChange="hyphenFunc()">
+            <p id="output"></p>
+        </div>
+    </div>
+    <script>
+
+        const hyphenFunc = () => {
+            let input = document.getElementById("input").value;
+            const output = document.getElementById("output");
+            let result;
+
+            input = input.split(" ");
+            result = input
+                .map((cha) =>
+                    cha.split("").map((char, index) => (index === 0 ? char : (index === cha.length - 1) ? (char = "- ") : (char = "-")))
+                )
+                .flat()
+                .join("");
+            output.innerText = result
+        };
+    </script>
+</body>
+
+</html>
